@@ -1,0 +1,42 @@
+name: portafolilo
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.7
+dependencies:
+  flutter:
+    sdk: flutter
+  carousel_slider: ^5.0.0
+  cupertino_icons: ^1.0.8
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  flutter_svg: ^2.0.10+1
+  gap: ^3.0.1
+  flutter_riverpod: ^3.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  riverpod_lint: ^3.1.0
+  custom_lint: ^0.8.1
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  fonts:
+    - family: texto
+      fonts:
+        - asset: assets/fonts/simpleHandmade.otf
+
+    - family: titulo
+      fonts:
+        - asset: assets/fonts/GrandParadiso-Regular.otf
+  assets:
+    - assets/images/
