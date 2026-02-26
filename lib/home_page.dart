@@ -81,7 +81,16 @@ class HomePage extends StatelessWidget {
       SizedBox(height: 20),
       Container(
         width: double.infinity,
-        color: AppColors.darkgreen,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: const AssetImage('assets/images/fondDeWindows.jpg'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.6),
+              BlendMode.darken,
+            ),
+          ),
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -129,27 +138,6 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-              ),
-            ),
-            const SizedBox(width: 40),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  color: AppColors.light,
-                ),
-                child: ClipRRect(
-
-                  child: Image.asset(
-                    'assets/images/dataBases.jpg',
-                    fit: BoxFit.cover,
-                    height: 215,
-                    alignment: Alignment.centerRight,
-                    filterQuality: FilterQuality.high,
-                    width: 700,
-
-                  ),
                 ),
               ),
             ),

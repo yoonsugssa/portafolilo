@@ -10,7 +10,8 @@ class CoursesPage extends StatelessWidget {
         appBar: const MyAppBar(),
         body: SingleChildScrollView(
           child: content(context),
-        ));
+        )
+    );
   }
 
   Widget content(BuildContext context) {
