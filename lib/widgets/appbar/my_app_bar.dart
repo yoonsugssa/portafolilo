@@ -7,34 +7,40 @@ import 'package:portafolilo/widgets/language_switch.dart';
 
 import '../../style/app_size.dart';
 import 'app_bar_drawer_icon.dart';
+import 'drawer_menu.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      alignment: Alignment.center,
-      color: AppColors.plane,
-      height: context.insets.appBarHeight,
-      padding: EdgeInsets.symmetric(horizontal: context.insets.padding),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxWidth: Insets.maxWidth,
+    return Column(
+      children: [
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          alignment: Alignment.center,
+          color: AppColors.plane,
+          height: context.insets.appBarHeight,
+          padding: EdgeInsets.symmetric(horizontal: context.insets.padding),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: Insets.maxWidth,
+            ),
+            child: Row(
+              children: [
+                AppLogo(),
+                Spacer(),
+                if (context.isDesktop)LargeMenu(),
+                Spacer(),
+                LanguageSwitch(),
+                ThemeToggle(),
+                if(!context.isDesktop) AppBarDrawerIcon(),
+              ],
+            ),
+          ),
         ),
-        child: Row(
-          children: [
-            AppLogo(),
-            Spacer(),
-            if (context.isDesktop)LargeMenu(),
-            Spacer(),
-            LanguageSwitch(),
-            ThemeToggle(),
-            if(!context.isDesktop) AppBarDrawerIcon(),
-          ],
-        ),
-      ),
+        if (!context.isDesktop) const DrawerMenu(),
+      ],
     );
   }
 
@@ -72,6 +78,27 @@ class LargeMenu extends StatelessWidget {
             Navigator.pushNamed(context, e.path);
           },
           )
+      )
+          .toList(),
+    );
+  }
+}
+
+class SmallMenu extends StatelessWidget {
+  const SmallMenu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: AppMenuList.getItems(context)
+          .map((AppMenu e) => LargeAppBarMenuItem(
+        text: e.title,
+        isSelected: true,
+        onTap: (){
+          Navigator.pop(context);
+          Navigator.pushNamed(context, e.path);
+        },
+      )
       )
           .toList(),
     );
