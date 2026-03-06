@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portafolilo/style/app_colors.dart';
+import 'package:portafolilo/widgets/appbar/drawer_menu.dart';
 
-class AppBarDrawerIcon extends StatefulWidget {
+class AppBarDrawerIcon extends ConsumerStatefulWidget {
   const AppBarDrawerIcon({super.key});
 
   @override
-  State<AppBarDrawerIcon> createState() => _AppBarDrawerIconState();
+  ConsumerState<AppBarDrawerIcon> createState() => _AppBarDrawerIconState();
 }
 
-class _AppBarDrawerIconState extends State<AppBarDrawerIcon> with SingleTickerProviderStateMixin{
+class _AppBarDrawerIconState extends ConsumerState<AppBarDrawerIcon> with SingleTickerProviderStateMixin{
 
   late AnimationController controller;
   late Animation<double>animation;
@@ -23,21 +26,38 @@ class _AppBarDrawerIconState extends State<AppBarDrawerIcon> with SingleTickerPr
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context){
     return IconButton(
       onPressed: (){
         setState(() {
-          if(!isOpen) controller.forward();
-          else {
+          if (!isOpen){
+            controller.forward();
+          ref.read(drawerMenuControllerProvider.notifier).open();
+        } else {
             controller.reverse();
+            ref.read(drawerMenuControllerProvider.notifier).close();
           }
           isOpen = !isOpen;
+
         });
       },
-      icon: AnimatedIcon(
-      icon: AnimatedIcons.menu_close,
-        progress: animation,
-    ),
+      icon: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: AnimatedIcon(
+          icon: AnimatedIcons.menu_close,
+          progress: animation,
+          color: AppColors.blue,
+        ),
+      ),
     );
   }
 }
