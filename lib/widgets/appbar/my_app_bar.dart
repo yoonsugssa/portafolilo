@@ -14,38 +14,47 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    final appBarHeight = context.insets.appBarHeight;
+    
+    return Stack(
+      clipBehavior: Clip.none,
       children: [
+        if (!context.isDesktop)
+          Positioned(
+            top: appBarHeight,
+            left: 0,
+            right: 0,
+            child: const DrawerMenu(),
+          ),
         AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           alignment: Alignment.center,
           color: AppColors.plane,
-          height: context.insets.appBarHeight,
-          padding: EdgeInsets.symmetric(horizontal: context.insets.padding),
+          height: appBarHeight,
+          padding: EdgeInsets.symmetric(horizontal: context.isDesktop ? context.insets.padding : 16),
           child: ConstrainedBox(
             constraints: BoxConstraints(
               maxWidth: Insets.maxWidth,
             ),
             child: Row(
               children: [
-                AppLogo(),
-                Spacer(),
-                if (context.isDesktop)LargeMenu(),
-                Spacer(),
-                LanguageSwitch(),
-                ThemeToggle(),
-                if(!context.isDesktop) AppBarDrawerIcon(),
+                const AppLogo(),
+                const Spacer(),
+                if (context.isDesktop) const LargeMenu(),
+                if (context.isDesktop) const Spacer(),
+                const LanguageSwitch(),
+                const ThemeToggle(),
+                if(!context.isDesktop) const AppBarDrawerIcon(),
               ],
             ),
           ),
         ),
-        if (!context.isDesktop) const DrawerMenu(),
       ],
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(64);
 }
 
 class AppLogo extends StatelessWidget {
@@ -90,6 +99,7 @@ class SmallMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: AppMenuList.getItems(context)
           .map((AppMenu e) => LargeAppBarMenuItem(
         text: e.title,
@@ -123,6 +133,7 @@ class LargeAppBarMenuItem extends StatelessWidget {
         ),
         child: Text(
           text,
+          //colores de la letra del menu
           style: SmallTextStyles().bodyLgMedium.copyWith(
             color: isSelected ? AppColors.blue: AppColors.darkgreen.withOpacity(0.6),
             fontFamily: 'texto',

@@ -34,6 +34,7 @@ class _AppBarDrawerIconState extends ConsumerState<AppBarDrawerIcon> with Single
   @override
   Widget build(BuildContext context){
     return IconButton(
+      padding: EdgeInsets.zero,
       onPressed: (){
         setState(() {
           if (!isOpen){
@@ -48,14 +49,19 @@ class _AppBarDrawerIconState extends ConsumerState<AppBarDrawerIcon> with Single
         });
       },
       icon: Container(
+        width: 40,
+        height: 40,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: AnimatedIcon(
-          icon: AnimatedIcons.menu_close,
-          progress: animation,
-          color: AppColors.blue,
+        child: Center(
+          child: AnimatedIcon(
+            icon: AnimatedIcons.menu_close,
+            progress: animation,
+            color: AppColors.blue,
+            size: 24,
+          ),
         ),
       ),
     );

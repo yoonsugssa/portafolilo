@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portafolilo/extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:portafolilo/style/app_colors.dart';
 import 'my_app_bar.dart';
 part 'drawer_menu.g.dart';
+
 
 
 class DrawerMenu extends ConsumerStatefulWidget {
@@ -53,7 +55,7 @@ class _DrawerMenuState extends ConsumerState<DrawerMenu>
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: context.colorScheme.surface,
+            color: AppColors.plane,
           boxShadow :[
           BoxShadow(
               color: context.colorScheme.surface.withOpacity(0.9),
