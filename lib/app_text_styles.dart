@@ -28,7 +28,7 @@ class SmallTextStyles extends AppTextStyles {
 
   @override
   TextStyle get titleLgBold => const TextStyle(
-    fontSize: 24,
+    fontSize: 30,
   );
 
   @override

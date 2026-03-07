@@ -168,10 +168,12 @@ class HomePage extends StatelessWidget {
         children: [
           Text(
             "Alessandra Del Carmen Val García",
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'titulo',
               fontSize: 50,
+
             ),
           ),
           SizedBox(height: 10),
