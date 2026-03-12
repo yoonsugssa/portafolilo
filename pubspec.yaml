@@ -41,5 +41,8 @@ flutter:
     - family: titulo
       fonts:
         - asset: assets/fonts/GrandParadiso-Regular.otf
+    - family: portafolio
+      fonts:
+        - asset: assets/fonts/crackin.ttf
   assets:
     - assets/images/

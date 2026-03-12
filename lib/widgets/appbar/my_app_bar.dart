@@ -81,7 +81,7 @@ class AppLogo extends StatelessWidget {
     return Text(
       'Portafolio',
       style: context.textStyle.titleLgBold.copyWith(
-        fontFamily: 'titulo',
+        fontFamily: 'portafolio',
         color: AppColors.blue,
       ),
     );
