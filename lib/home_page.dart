@@ -5,6 +5,7 @@ import 'package:portafolilo/style/app_size.dart';
 import 'app_text_styles.dart';
 import 'extensions.dart';
 import 'widgets/appbar/my_app_bar.dart';
+import 'package:portafolilo/widgets/polaroid_stack.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,10 +13,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const MyAppBar(),
-        body: SingleChildScrollView(
-          child: content(context),
-        ));
+      appBar: const MyAppBar(),
+      body: SingleChildScrollView(child: content(context)),
+    );
   }
 
   static const List<String> carouselTexts = [
@@ -27,124 +27,113 @@ class HomePage extends StatelessWidget {
   ];
 
   Widget content(BuildContext context) {
-    return Column(children: [
-      articleCard(),
-      //altura del carusel en comparacion con la del cuadro de arriba
-      SizedBox(height: 10),
-      CarouselSlider(
-        items: carouselTexts.map((text) {
-          return Container(
-            width: Insets.maxWidth,
-            margin: const EdgeInsets.only(top: 10),
-            decoration: BoxDecoration(
-              color: AppColors.darkgreen,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                  child: Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 25, color: AppColors.text, fontFamily: 'texto'),
-                  ),
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    "Ver más",
-                    style: SmallTextStyles().bodyLgMedium.copyWith(
-                      color: AppColors.darkgreen,
-                      fontFamily: 'texto',
-                      fontWeight: FontWeight.bold,
+    return Column(
+      children: [
+        articleCard(),
+        //altura del carusel en comparacion con la del cuadro de arriba
+        SizedBox(height: 10),
+        CarouselSlider(
+          items: carouselTexts.map((text) {
+            return Container(
+              width: Insets.maxWidth,
+              margin: const EdgeInsets.only(top: 10),
+              decoration: BoxDecoration(
+                color: AppColors.darkgreen,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                    child: Text(
+                      text,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 25,
+                        color: AppColors.text,
+                        fontFamily: 'texto',
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        }).toList(),
-        options: CarouselOptions(
-          height: 260,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 3),
-          autoPlayAnimationDuration: const Duration(milliseconds: 600),
-          enlargeCenterPage: true,
-        ),
-      ),
-      SizedBox(height: 20),
-      Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: const AssetImage('assets/images/fondDeWindows.jpg'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.6),
-              BlendMode.darken,
-            ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        AppColors.primaryColor,
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Ver más",
+                      style: SmallTextStyles().bodyLgMedium.copyWith(
+                        color: AppColors.darkgreen,
+                        fontFamily: 'texto',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
+          options: CarouselOptions(
+            height: 260,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 600),
+            enlargeCenterPage: true,
           ),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 50),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Acerca de mí',
-                      style: TextStyle(
-                        fontFamily: 'titulo',
-                        fontSize: 40,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        shadows: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.9),
-                            spreadRadius: 1,
-                            blurRadius: 1,
-                            offset: const Offset(1, 1),
-                          ),
-                        ],
+        SizedBox(height: 30),
+        Container(
+          width: double.infinity,
+          color: AppColors.darkblue,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    //este margen mueve el texto a la derecha
+                    vertical: 80,
+                    horizontal: 80,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Mi vida escolar:',
+                        style: SmallTextStyles().bodyMdMedium.copyWith(
+                          color: AppColors.plane,
+                          fontFamily: 'titulo',
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'Me gusta analizar empresas y hacer mapas de proceso. No cuento con mucha experiencia, pero me gusta aprender.',
-                      style: TextStyle(
-                        fontFamily: 'texto',
-                        fontSize: 25,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white.withOpacity(0.85),
-                        shadows: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.9),
-                            spreadRadius: 1,
-                            blurRadius: 1,
-                            offset: const Offset(1, 1),
-                          ),
-                        ],
-                        height: 1.1,
+                      Text(
+                        'Actualmente soy estudiante de informàtica en IPISA, '
+                            'soy de la promoción del año 2022 llamada NAUTAE.',
+                        style: SmallTextStyles().bodyLgBold.copyWith(
+                          color: AppColors.plane,
+                          fontFamily: 'texto',
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+              const Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 50),
+                  child: Center(child: PolaroidStack()),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    ]);
+      ],
+    );
   }
 
   Widget articleCard() {
@@ -172,8 +161,7 @@ class HomePage extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'titulo',
-              fontSize: 50,
-
+              fontSize: 60,
             ),
           ),
           SizedBox(height: 10),

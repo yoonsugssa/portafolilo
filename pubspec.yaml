@@ -40,9 +40,10 @@ flutter:
 
     - family: titulo
       fonts:
-        - asset: assets/fonts/GrandParadiso-Regular.otf
+        - asset: assets/fonts/FloraisonDesAmours.ttf
     - family: portafolio
       fonts:
-        - asset: assets/fonts/crackin.ttf
+        - asset: assets/fonts/Blantela.otf
   assets:
     - assets/images/
+    - assets/images/polaroids/

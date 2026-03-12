@@ -12,7 +12,7 @@ abstract class AppTextStyles {
 class SmallTextStyles extends AppTextStyles {
   @override
   TextStyle get bodyLgBold => const TextStyle(
-    fontSize: 14,
+    fontSize: 25,
     fontWeight: FontWeight.bold,
   );
 
@@ -23,12 +23,12 @@ class SmallTextStyles extends AppTextStyles {
 
   @override
   TextStyle get bodyMdMedium => const TextStyle(
-    fontSize: 14,
+    fontSize: 40,
   );
 
   @override
   TextStyle get titleLgBold => const TextStyle(
-    fontSize: 30,
+    fontSize: 25,
   );
 
   @override
@@ -61,7 +61,7 @@ class LargeTextStyles extends AppTextStyles {
 
   @override
   TextStyle get titleLgBold => const TextStyle(
-    fontSize: 40,
+    fontSize: 35,
   );
 
   @override
