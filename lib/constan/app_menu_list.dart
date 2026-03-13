@@ -3,6 +3,7 @@ import 'package:portafolilo/routes/app_route.dart';
 
 import '../extensions.dart';
 
+//lista de los routes del menu
 class AppMenuList {
   static List<AppMenu> getItems(BuildContext context){
     return[

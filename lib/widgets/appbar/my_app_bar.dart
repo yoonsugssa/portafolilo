@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portafolilo/app_text_styles.dart';
+import 'package:portafolilo/style/app_text_styles.dart';
 import 'package:portafolilo/constan/app_menu_list.dart';
 import 'package:portafolilo/extensions.dart';
 import 'package:portafolilo/style/app_colors.dart';
@@ -130,7 +130,7 @@ class SmallMenu extends ConsumerWidget {
                 isSelected: true,
                 onTap: () {
                   ref.read(drawerMenuControllerProvider.notifier).close();
-                  // Usamos microtask para diferir la navegación y evitar conflictos de mouse_tracker
+                  // microtask para diferir la navegación y evitar conflictos de mouse_tracker
                   Future.microtask(() {
                     if (context.mounted) {
                       Navigator.pushNamed(context, item.path);

@@ -22,14 +22,14 @@ class LanguageSwitch extends ConsumerWidget {
             value: 0,
             child: PopupLanguageSwitchItem(
               language: 'Español',
-              icon: AppIcon.en, // Corregido
+              icon: AppIcon.es,
             ),
           ),
           PopupMenuItem(
             value: 1,
             child: PopupLanguageSwitchItem(
               language: 'English',
-              icon: AppIcon.es, // Corregido
+              icon: AppIcon.en,
             ),
           ),
         ];
@@ -51,7 +51,7 @@ class LanguageSwitch extends ConsumerWidget {
           const Gap(4),
           Localizations.localeOf(context).languageCode == 'es'
               ? SvgPicture.asset(
-                  AppIcon.en, // Corregido
+                  AppIcon.es,
                   width: 18,
                   height: 18,
                 )

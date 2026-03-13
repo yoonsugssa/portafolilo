@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portafolilo/home_page.dart';
 import 'package:portafolilo/routes/app_route.dart';
 import 'package:portafolilo/style/app_theme.dart';
+import 'package:portafolilo/widgets/provider.dart';
 
 import 'about_page.dart';
 import 'courses_page.dart';
@@ -13,11 +14,12 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final locale = ref.watch(appLocaleProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
@@ -36,6 +38,7 @@ class MyApp extends StatelessWidget {
         Locale('en', 'US'),
       ],
 
+      locale: Locale (locale.value??'es'),
       initialRoute: Routes.home,
 
       routes: {

@@ -24,12 +24,12 @@ class _PolaroidStackState extends State<PolaroidStack> {
           children: [
             _buildAnimatedImage(
               'assets/images/polaroids/imagen1.png',
-              angle: isHovered ? -math.pi / 8 : 0,
+              angle: isHovered ? -math.pi / 9 : 0,
               offset: isHovered ? const Offset(-100, -10) : Offset.zero,
             ),
             _buildAnimatedImage(
               'assets/images/polaroids/imagen3.png',
-              angle: isHovered ? math.pi / 8 : 0,
+              angle: isHovered ? math.pi / 9 : 0,
               offset: isHovered ? const Offset(100, -10) : Offset.zero,
             ),
             _buildAnimatedImage(

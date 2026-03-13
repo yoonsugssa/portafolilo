@@ -2,8 +2,7 @@ import 'package:flutter/material.dart' hide CarouselController;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:portafolilo/style/app_colors.dart';
 import 'package:portafolilo/style/app_size.dart';
-import 'app_text_styles.dart';
-import 'extensions.dart';
+import 'style/app_text_styles.dart';
 import 'widgets/appbar/my_app_bar.dart';
 import 'package:portafolilo/widgets/polaroid_stack.dart';
 
@@ -88,6 +87,7 @@ class HomePage extends StatelessWidget {
         SizedBox(height: 30),
         Container(
           width: double.infinity,
+          //color del fondo
           color: AppColors.darkblue,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -111,7 +111,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Actualmente soy estudiante de informàtica en IPISA, '
+                        'Actualmente soy estudiante de informática en IPISA, '
                             'soy de la promoción del año 2022 llamada NAUTAE.',
                         style: SmallTextStyles().bodyLgBold.copyWith(
                           color: AppColors.plane,

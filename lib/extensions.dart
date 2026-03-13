@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portafolilo/l10n/app_localizations.dart';
 import 'package:portafolilo/style/app_size.dart';
-import 'app_text_styles.dart';
+import 'style/app_text_styles.dart';
 
 enum FormFactorType{
   mobile,
