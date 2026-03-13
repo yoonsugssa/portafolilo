@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portafolilo/home_page.dart';
 import 'package:portafolilo/routes/app_route.dart';
 import 'package:portafolilo/style/app_theme.dart';
-import 'package:portafolilo/widgets/provider.dart';
+import 'package:portafolilo/widgets/app_locale_controller.dart';
 
 import 'about_page.dart';
 import 'courses_page.dart';
@@ -19,7 +19,7 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final locale = ref.watch(appLocaleProvider);
+    final locale = ref.watch(appLocaleControllerProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 

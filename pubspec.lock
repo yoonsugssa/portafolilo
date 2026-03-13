@@ -622,7 +622,7 @@ packages:
     source: hosted
     version: "4.0.0"
   riverpod_generator:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: riverpod_generator
       sha256: e43b1537229cc8f487f09b0c20d15dba840acbadcf5fc6dad7ad5e8ab75950dc
