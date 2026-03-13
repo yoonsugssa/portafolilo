@@ -59,7 +59,7 @@ class _AppBarDrawerIconState extends ConsumerState<AppBarDrawerIcon> with Single
           child: AnimatedIcon(
             icon: AnimatedIcons.menu_close,
             progress: animation,
-            color: AppColors.blue,
+            color: AppColors.darkblue,
             size: 24,
           ),
         ),

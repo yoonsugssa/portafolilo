@@ -34,10 +34,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: AppColors.plane,
+            color: context.colorScheme.onSurface,
             border: Border(
               bottom: BorderSide(
-                color: AppColors.blue.withOpacity(0.2),
+              color: context.colorScheme.surface.withOpacity(0.2),
                 width: 1,
               ),
             ),
@@ -82,7 +82,7 @@ class AppLogo extends StatelessWidget {
       'Portafolio',
       style: context.textStyle.titleLgBold.copyWith(
         fontFamily: 'portafolio',
-        color: AppColors.blue,
+          color: context.colorScheme.surface,
       ),
     );
   }
@@ -141,7 +141,7 @@ class SmallMenu extends ConsumerWidget {
             ),
             if (idx < items.length - 1)
               Divider(
-                color: AppColors.blue.withOpacity(0.1),
+                color: AppColors.darkblue.withOpacity(0.1),
                 height: 1,
                 thickness: 1,
                 indent: 16,
@@ -174,7 +174,7 @@ class LargeAppBarMenuItem extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
           style: SmallTextStyles().bodyLgMedium.copyWith(
-            color: isSelected ? AppColors.blue: AppColors.darkgreen.withOpacity(0.6),
+            color: isSelected ? AppColors.darkblue: AppColors.darkgreen.withOpacity(0.6),
             fontFamily: 'texto',
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),

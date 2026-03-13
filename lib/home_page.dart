@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide CarouselController;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:portafolilo/style/app_colors.dart';
 import 'package:portafolilo/style/app_size.dart';
+import 'extensions.dart';
 import 'style/app_text_styles.dart';
 import 'widgets/appbar/my_app_bar.dart';
 import 'package:portafolilo/widgets/polaroid_stack.dart';
@@ -37,7 +38,7 @@ class HomePage extends StatelessWidget {
               width: Insets.maxWidth,
               margin: const EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
-                color: AppColors.darkgreen,
+                color: context.colorScheme.onSecondary,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -50,7 +51,7 @@ class HomePage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 25,
-                        color: AppColors.text,
+                        color: AppColors.plane,
                         fontFamily: 'texto',
                       ),
                     ),
@@ -59,14 +60,14 @@ class HomePage extends StatelessWidget {
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
-                        AppColors.primaryColor,
+                        AppColors.plane,
                       ),
                     ),
                     onPressed: () {},
                     child: Text(
                       "Ver más",
                       style: SmallTextStyles().bodyLgMedium.copyWith(
-                        color: AppColors.darkgreen,
+                        color: context.colorScheme.surface,
                         fontFamily: 'texto',
                         fontWeight: FontWeight.bold,
                       ),
@@ -97,11 +98,11 @@ class HomePage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     //este margen mueve el texto a la derecha
-                    vertical: 80,
-                    horizontal: 80,
+                    vertical: 70,
+                    horizontal: 50,
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         'Mi vida escolar:',
@@ -124,10 +125,7 @@ class HomePage extends StatelessWidget {
               ),
               const Expanded(
                 flex: 2,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 50),
                   child: Center(child: PolaroidStack()),
-                ),
               ),
             ],
           ),

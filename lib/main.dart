@@ -30,7 +30,7 @@ class MyApp extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
 
-      darkTheme: AppTheme.dark,
+      darkTheme: AppTheme.greenblue,
       themeMode: ThemeMode.dark,
 
       supportedLocales: const [
