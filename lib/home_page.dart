@@ -27,11 +27,13 @@ class HomePage extends StatelessWidget {
   ];
 
   Widget content(BuildContext context) {
+    // Detectar si la pantalla es pequeña (ej. móviles)
+    bool isMobile = MediaQuery.of(context).size.width < 800;
+
     return Column(
       children: [
         articleCard(),
-        //altura del carusel en comparacion con la del cuadro de arriba
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         CarouselSlider(
           items: carouselTexts.map((text) {
             return Container(
@@ -56,12 +58,10 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        AppColors.plane,
-                      ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.plane,
                     ),
                     onPressed: () {},
                     child: Text(
@@ -80,53 +80,48 @@ class HomePage extends StatelessWidget {
           options: CarouselOptions(
             height: 260,
             autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 3),
-            autoPlayAnimationDuration: const Duration(milliseconds: 600),
             enlargeCenterPage: true,
           ),
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
+        // --- SECCIÓN RESPONSIVE ---
+        // --- SECCIÓN AJUSTADA ---
         Container(
           width: double.infinity,
-          //color del fondo
           color: AppColors.darkblue,
-          child: Row(
+          // Reducimos el padding vertical del contenedor
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    //este margen mueve el texto a la derecha
-                    vertical: 70,
-                    horizontal: 50,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Mi vida escolar:',
-                        style: SmallTextStyles().bodyMdMedium.copyWith(
-                          color: AppColors.plane,
-                          fontFamily: 'titulo',
-                        ),
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 800),
+                child: Column(
+                  children: [
+                    Text(
+                      'Mi vida escolar:',
+                      textAlign: TextAlign.center,
+                      style: SmallTextStyles().bodyMdMedium.copyWith(
+                        color: AppColors.plane,
+                        fontFamily: 'titulo',
                       ),
-                      Text(
-                        'Actualmente soy estudiante de informática en IPISA, '
-                            'soy de la promoción del año 2022 llamada NAUTAE.',
-                        style: SmallTextStyles().bodyLgBold.copyWith(
-                          color: AppColors.plane,
-                          fontFamily: 'texto',
-                        ),
+                    ),
+                    const SizedBox(height: 5), // Espacio mínimo entre títulos
+                    Text(
+                      'Actualmente soy estudiante de informática en IPISA, '
+                      'soy de la promoción del año 2022 llamada NAUTAE.',
+                      textAlign: TextAlign.center,
+                      style: SmallTextStyles().bodyLgBold.copyWith(
+                        color: AppColors.plane,
+                        fontFamily: 'texto',
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              const Expanded(
-                flex: 2,
-                  child: Center(child: PolaroidStack()),
-              ),
+              // Reducido de 40 a 10 para pegar el Polaroid al texto
+              const SizedBox(height: 10),
+              const Center(child: PolaroidStack()),
             ],
           ),
         ),
