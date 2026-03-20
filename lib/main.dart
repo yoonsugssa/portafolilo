@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portafolilo/home_page.dart';
 import 'package:portafolilo/routes/app_route.dart';
 import 'package:portafolilo/style/app_theme.dart';
+import 'package:portafolilo/style/app_theme_controller.dart';
 import 'package:portafolilo/widgets/app_locale_controller.dart';
+import 'package:portafolilo/style/app_theme_controller.dart';
 
 import 'about_page.dart';
 import 'courses_page.dart';
@@ -18,8 +20,10 @@ class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(appLocaleControllerProvider);
+    final theme = ref.watch(currentThemeProvider);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
@@ -30,15 +34,15 @@ class MyApp extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
 
-      darkTheme: AppTheme.greenblue,
-      themeMode: ThemeMode.dark,
+      theme: theme,
+      themeMode: ThemeMode.system,
 
       supportedLocales: const [
         Locale('es', 'ES'),
         Locale('en', 'US'),
       ],
 
-      locale: Locale (locale.value??'es'),
+      locale: Locale(locale.value ?? 'es'),
       initialRoute: Routes.home,
 
       routes: {
@@ -48,4 +52,4 @@ class MyApp extends ConsumerWidget {
       },
     );
   }
-  }
+}

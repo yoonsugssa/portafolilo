@@ -7,6 +7,7 @@ import 'package:portafolilo/style/app_colors.dart';
 import 'package:portafolilo/widgets/language_switch.dart';
 
 import '../../style/app_size.dart';
+import '../../style/app_theme_controller.dart';
 import 'app_bar_drawer_icon.dart';
 import 'drawer_menu.dart';
 
@@ -174,7 +175,7 @@ class LargeAppBarMenuItem extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
           style: SmallTextStyles().bodyLgMedium.copyWith(
-            color: isSelected ? AppColors.darkblue: AppColors.darkgreen.withOpacity(0.6),
+            color: context.colorScheme.surface,
             fontFamily: 'texto',
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
@@ -184,11 +185,20 @@ class LargeAppBarMenuItem extends StatelessWidget {
   }
 }
 
-class ThemeToggle extends StatelessWidget {
+class ThemeToggle extends ConsumerWidget {
   const ThemeToggle({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Switch(value: false, onChanged: (value){});
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(appThemeControllerProvider);
+
+    return Switch(
+      value: state == AppThemeType.redpink,
+      onChanged: (_) {
+        ref
+            .read(appThemeControllerProvider.notifier)
+            .toggleTheme();
+      },
+    );
   }
 }

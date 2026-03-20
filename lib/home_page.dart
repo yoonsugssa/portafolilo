@@ -51,9 +51,9 @@ class HomePage extends StatelessWidget {
                     child: Text(
                       text,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 25,
-                        color: AppColors.plane,
+                        color: context.colorScheme.primary,
                         fontFamily: 'texto',
                       ),
                     ),
@@ -61,13 +61,13 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.plane,
+                      backgroundColor: context.colorScheme.primary,
                     ),
                     onPressed: () {},
                     child: Text(
                       "Ver más",
                       style: SmallTextStyles().bodyLgMedium.copyWith(
-                        color: context.colorScheme.surface,
+                        color: context.colorScheme.onSecondary,
                         fontFamily: 'texto',
                         fontWeight: FontWeight.bold,
                       ),
@@ -84,35 +84,34 @@ class HomePage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 30),
-        // --- SECCIÓN RESPONSIVE ---
-        // --- SECCIÓN AJUSTADA ---
         Container(
           width: double.infinity,
-          color: AppColors.darkblue,
-          // Reducimos el padding vertical del contenedor
+          color: context.colorScheme.surface,
           padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 800),
+                constraints: const BoxConstraints(maxWidth: 750),
                 child: Column(
                   children: [
                     Text(
                       'Mi vida escolar:',
                       textAlign: TextAlign.center,
                       style: SmallTextStyles().bodyMdMedium.copyWith(
-                        color: AppColors.plane,
+                        color: context.colorScheme.primary,
                         fontFamily: 'titulo',
                       ),
                     ),
-                    const SizedBox(height: 5), // Espacio mínimo entre títulos
+                    const SizedBox(height: 5),
+                    // Espacio mínimo entre títulos
                     Text(
-                      'Actualmente soy estudiante de informática en IPISA, '
-                      'soy de la promoción del año 2022 llamada NAUTAE.',
+                      'Hice la primaria en la escuela Monte Adentro Puñal. '
+                          'Después, curcé la secundaria en la escuela Cecilia Aurora Baez Collado. '
+                          'Actualmente, estoy en el Politécnico Insdustrial de Santiago (IPISA)',
                       textAlign: TextAlign.center,
                       style: SmallTextStyles().bodyLgBold.copyWith(
-                        color: AppColors.plane,
+                        color: context.colorScheme.primary,
                         fontFamily: 'texto',
                       ),
                     ),

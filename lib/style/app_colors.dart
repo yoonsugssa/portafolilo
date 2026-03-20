@@ -17,6 +17,7 @@ class DarkAppColors {
 
   static const darkred = Color(0xff3A0519);
   static const red = Color(0xff670D2F);
+  static const redpink = Color(0xffa5007e);
   static const cutered = Color(0xffA53860);
   static const lightpink = Color(0xffFFC4C4);
   static const pink = Color(0xffFCF5EE);

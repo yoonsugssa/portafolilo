@@ -46,7 +46,7 @@ class LanguageSwitch extends ConsumerWidget {
         children: [
           Icon(
             Icons.language,
-            color: AppColors.darkblue,
+            color: context.colorScheme.surface,
           ),
           const Gap(4),
           Localizations.localeOf(context).languageCode == 'es'

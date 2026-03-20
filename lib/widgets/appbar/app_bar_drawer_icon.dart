@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portafolilo/style/app_colors.dart';
 import 'package:portafolilo/widgets/appbar/drawer_menu.dart';
 
+import '../../extensions.dart';
+
 class AppBarDrawerIcon extends ConsumerStatefulWidget {
   const AppBarDrawerIcon({super.key});
 
@@ -59,7 +61,7 @@ class _AppBarDrawerIconState extends ConsumerState<AppBarDrawerIcon> with Single
           child: AnimatedIcon(
             icon: AnimatedIcons.menu_close,
             progress: animation,
-            color: AppColors.darkblue,
+            color: context.colorScheme.surface,
             size: 24,
           ),
         ),
