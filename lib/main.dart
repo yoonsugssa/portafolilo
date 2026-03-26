@@ -6,7 +6,6 @@ import 'package:portafolilo/routes/app_route.dart';
 import 'package:portafolilo/style/app_theme.dart';
 import 'package:portafolilo/style/app_theme_controller.dart';
 import 'package:portafolilo/widgets/app_locale_controller.dart';
-import 'package:portafolilo/style/app_theme_controller.dart';
 
 import 'about_page.dart';
 import 'courses_page.dart';
@@ -25,6 +24,7 @@ class MyApp extends ConsumerWidget {
     final theme = ref.watch(currentThemeProvider);
 
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
 
       localizationsDelegates: const [

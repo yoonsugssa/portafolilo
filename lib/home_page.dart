@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart' hide CarouselController;
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:portafolilo/style/app_colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portafolilo/style/app_size.dart';
+import 'package:portafolilo/style/app_theme_controller.dart';
 import 'extensions.dart';
 import 'style/app_text_styles.dart';
 import 'widgets/appbar/my_app_bar.dart';
 import 'package:portafolilo/widgets/polaroid_stack.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const MyAppBar(),
-      body: SingleChildScrollView(child: content(context)),
+      body: SingleChildScrollView(child: content(context, ref)),
     );
   }
 
@@ -26,13 +27,13 @@ class HomePage extends StatelessWidget {
     "Contacto:\nMi número de teléfono es 809-456-1634.",
   ];
 
-  Widget content(BuildContext context) {
+  Widget content(BuildContext context, WidgetRef ref) {
     // Detectar si la pantalla es pequeña (ej. móviles)
     bool isMobile = MediaQuery.of(context).size.width < 800;
 
     return Column(
       children: [
-        articleCard(),
+        articleCard(ref),
         const SizedBox(height: 10),
         CarouselSlider(
           items: carouselTexts.map((text) {
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 25,
-                        color: context.colorScheme.primary,
+                        color: context.colorScheme.secondary,
                         fontFamily: 'texto',
                       ),
                     ),
@@ -61,7 +62,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: context.colorScheme.primary,
+                      backgroundColor: context.colorScheme.secondary,
                     ),
                     onPressed: () {},
                     child: Text(
@@ -99,7 +100,7 @@ class HomePage extends StatelessWidget {
                       'Mi vida escolar:',
                       textAlign: TextAlign.center,
                       style: SmallTextStyles().bodyMdMedium.copyWith(
-                        color: context.colorScheme.primary,
+                        color: context.colorScheme.secondary,
                         fontFamily: 'titulo',
                       ),
                     ),
@@ -108,10 +109,10 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Hice la primaria en la escuela Monte Adentro Puñal. '
                           'Después, curcé la secundaria en la escuela Cecilia Aurora Baez Collado. '
-                          'Actualmente, estoy en el Politécnico Insdustrial de Santiago (IPISA)',
+                          'Actualmente, estoy en el Politécnico Insdustrial de Santiago (IPISA).',
                       textAlign: TextAlign.center,
                       style: SmallTextStyles().bodyLgBold.copyWith(
-                        color: context.colorScheme.primary,
+                        color: context.colorScheme.secondary,
                         fontFamily: 'texto',
                       ),
                     ),
@@ -128,20 +129,26 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget articleCard() {
+  Widget articleCard(WidgetRef ref) {
+    final themeType = ref.watch(appThemeControllerProvider);
+    String backgroundImage = themeType == AppThemeType.greenblue
+        ? 'assets/images/fondDeWindows.jpg'
+        : 'assets/images/fondo_rosa.jpg';
+
     return Container(
       width: double.infinity,
       height: 400.0,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: const AssetImage('assets/images/fondDeWindows.jpg'),
+          image: AssetImage(backgroundImage),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-            Colors.black.withOpacity(0.6),
+            Colors.black.withValues(alpha: 0.7),
             BlendMode.darken,
           ),
         ),
       ),
+
       padding: EdgeInsets.all(10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -161,7 +168,7 @@ class HomePage extends StatelessWidget {
             "Estudiante de informática",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withValues(alpha: 0.9),
               fontSize: 25,
               fontFamily: 'texto',
             ),
@@ -171,7 +178,7 @@ class HomePage extends StatelessWidget {
             "(809) 456-1634 | alessandravg2228@gmail.com",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withValues(alpha: 0.9),
               fontSize: 20,
               fontFamily: 'texto',
             ),

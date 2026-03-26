@@ -58,7 +58,7 @@ class _DrawerMenuState extends ConsumerState<DrawerMenu>
             color: AppColors.plane,
           boxShadow :[
           BoxShadow(
-              color: context.colorScheme.surface.withOpacity(0.9),
+              color: context.colorScheme.surface.withValues(alpha: 0.9),
               blurRadius: 6,
               spreadRadius: 2,
           ),
@@ -77,11 +77,11 @@ class DrawerMenuController extends _$DrawerMenuController {
   FutureOr<bool> build() {
     return false;
   }
-  open(){
+  void open(){
     update((state) => true);
   }
 
-  close(){
+  void close(){
     update((state) => false);
   }
 }

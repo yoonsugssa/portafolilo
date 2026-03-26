@@ -20,7 +20,6 @@ StateNotifierProvider<AppThemeController, AppThemeType>(
       (ref) => AppThemeController(),
 );
 
-// Provider derivado que devuelve el ThemeData listo para usar
 final currentThemeProvider = Provider<ThemeData>((ref) {
   final themeType = ref.watch(appThemeControllerProvider);
   return themeType == AppThemeType.greenblue

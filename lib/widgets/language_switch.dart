@@ -7,7 +7,6 @@ import 'package:portafolilo/widgets/seo_text.dart';
 
 import '../constan/app_icon.dart';
 import '../extensions.dart';
-import '../style/app_colors.dart';
 
 class LanguageSwitch extends ConsumerWidget {
   const LanguageSwitch({super.key});

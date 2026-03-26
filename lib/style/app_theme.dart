@@ -8,6 +8,18 @@ class AppTheme {
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.plane,
 
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.darkblue;
+        return AppColors.darkblue;
+      }),
+      trackColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.darkblue.withOpacity(0.5);
+        return AppColors.darkblue.withOpacity(0.5);
+      }),
+      trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+    ),
+
     colorScheme: const ColorScheme.light(
       primary: AppColors.plane,
       secondary: AppColors.plane,
@@ -25,8 +37,8 @@ class AppTheme {
 
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.plane,
-        foregroundColor: AppColors.plane,
+        backgroundColor: AppColors.darkblue,
+        foregroundColor: DarkAppColors.plane,
       ),
     ),
 
@@ -44,17 +56,29 @@ class AppTheme {
     brightness: Brightness.dark,
     scaffoldBackgroundColor: DarkAppColors.plane,
 
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return DarkAppColors.cutered;
+        return DarkAppColors.cutered;
+      }),
+      trackColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return DarkAppColors.cutered.withOpacity(0.3);
+        return DarkAppColors.cutered.withOpacity(0.3);
+      }),
+      trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+    ),
+
     colorScheme: const ColorScheme.dark(
-      primary: DarkAppColors.plane,
+      primary: DarkAppColors.red,
       secondary: DarkAppColors.plane,
       surface: DarkAppColors.red,
       onPrimary: DarkAppColors.plane,
-      onSecondary: DarkAppColors.darkred,
+      onSecondary: DarkAppColors.red,
       onSurface: DarkAppColors.plane, //fondo del my bar,
     ),
 
     appBarTheme: const AppBarTheme(
-      backgroundColor: DarkAppColors.black,
+      backgroundColor: DarkAppColors.plane,
       foregroundColor: DarkAppColors.plane,
       elevation: 0,
     ),
