@@ -3,7 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portafolilo/home_page.dart';
 import 'package:portafolilo/routes/app_route.dart';
-import 'package:portafolilo/style/app_theme.dart';
 import 'package:portafolilo/style/app_theme_controller.dart';
 import 'package:portafolilo/widgets/app_locale_controller.dart';
 

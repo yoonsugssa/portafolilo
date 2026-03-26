@@ -135,6 +135,8 @@ class HomePage extends ConsumerWidget {
         ? 'assets/images/fondDeWindows.jpg'
         : 'assets/images/fondo_rosa.jpg';
 
+    String titleFont = themeType == AppThemeType.greenblue ? 'titulo' : 'titulo_pink';
+
     return Container(
       width: double.infinity,
       height: 400.0,
@@ -159,8 +161,8 @@ class HomePage extends ConsumerWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
-              fontFamily: 'titulo',
-              fontSize: 60,
+              fontFamily: titleFont,
+              fontSize: 40,
             ),
           ),
           SizedBox(height: 10),

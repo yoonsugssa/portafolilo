@@ -41,10 +41,14 @@ flutter:
 
     - family: titulo
       fonts:
-        - asset: assets/fonts/FloraisonDesAmours.ttf
+        - asset: assets/fonts/magnolia_sky.ttf
+    - family: titulo_pink
+      fonts:
+        - asset: assets/fonts/watermelonscriptdemo.ttf
     - family: portafolio
       fonts:
-        - asset: assets/fonts/Blantela.otf
+        - asset: assets/fonts/thehumble.otf
+
   assets:
     - assets/images/
     - assets/images/polaroids/
