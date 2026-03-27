@@ -45,7 +45,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           height: appBarHeight,
           padding: EdgeInsets.symmetric(
-              horizontal: isDesktop ? context.insets.padding : 16
+              horizontal: isDesktop ? context.insets.padding : 20
           ),
           child: ConstrainedBox(
             constraints: BoxConstraints(

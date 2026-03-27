@@ -15,7 +15,7 @@ class LargeInsets extends AppInsets{
   double get padding => 80;
 
   @override
-  double get appBarHeight => 64;
+  double get appBarHeight => 65;
 }
 
 class SmallInsets extends AppInsets{
@@ -23,5 +23,5 @@ class SmallInsets extends AppInsets{
   double get padding => 16;
 
   @override
-  double get appBarHeight => 50;
+  double get appBarHeight => 70;
 }

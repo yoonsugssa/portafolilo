@@ -59,7 +59,7 @@ class HomePage extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: context.colorScheme.secondary,
@@ -79,7 +79,7 @@ class HomePage extends ConsumerWidget {
             );
           }).toList(),
           options: CarouselOptions(
-            height: 260,
+            height: 300,
             autoPlay: true,
             enlargeCenterPage: true,
           ),
