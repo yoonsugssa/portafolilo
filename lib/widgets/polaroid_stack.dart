@@ -13,9 +13,12 @@ class _PolaroidStackState extends State<PolaroidStack> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
+    return GestureDetector(
+        onTap: () => setState(() => isHovered = !isHovered),
+    child: MouseRegion(
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
+
       child: SizedBox(
         height: 400,
         width: 350,
@@ -40,6 +43,7 @@ class _PolaroidStackState extends State<PolaroidStack> {
           ],
         ),
       ),
+    ),
     );
   }
 

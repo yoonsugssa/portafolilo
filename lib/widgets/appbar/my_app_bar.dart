@@ -38,7 +38,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: context.colorScheme.onSurface,
             border: Border(
               bottom: BorderSide(
-              color: context.colorScheme.surface.withOpacity(0.2),
+              color: context.colorScheme.surface.withValues(alpha: 0.2),
                 width: 1,
               ),
             ),
@@ -164,20 +164,24 @@ class LargeAppBarMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: Insets.med,
-          vertical: Insets.med,
-        ),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: SmallTextStyles().bodyLgMedium.copyWith(
-            color: context.colorScheme.surface,
-            fontFamily: 'texto',
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: Insets.med,
+            vertical: Insets.med,
+          ),
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: SmallTextStyles().bodyLgMedium.copyWith(
+              color: context.colorScheme.surface,
+              fontFamily: 'texto',
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
         ),
       ),

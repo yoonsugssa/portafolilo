@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portafolilo/style/app_size.dart';
 import 'package:portafolilo/style/app_theme_controller.dart';
+import 'package:portafolilo/widgets/appbar/drawer_menu.dart';
 import 'extensions.dart';
 import 'style/app_text_styles.dart';
 import 'widgets/appbar/my_app_bar.dart';
@@ -15,6 +16,9 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const MyAppBar(),
+      drawer: const Drawer(
+          child: DrawerMenu()
+    ),
       body: SingleChildScrollView(child: content(context, ref)),
     );
   }
@@ -48,12 +52,11 @@ class HomePage extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: Text(
                       text,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 25,
+                      style: SmallTextStyles().bodyLgBold.copyWith(
                         color: context.colorScheme.secondary,
                         fontFamily: 'texto',
                       ),
@@ -145,7 +148,7 @@ class HomePage extends ConsumerWidget {
           image: AssetImage(backgroundImage),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-            Colors.black.withValues(alpha: 0.7),
+            Colors.black.withValues(alpha: 0.5),
             BlendMode.darken,
           ),
         ),
