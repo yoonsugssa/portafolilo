@@ -23,5 +23,5 @@ class SmallInsets extends AppInsets{
   double get padding => 16;
 
   @override
-  double get appBarHeight => 70;
+  double get appBarHeight => 65;
 }
