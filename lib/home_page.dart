@@ -79,7 +79,7 @@ class HomePage extends ConsumerWidget {
             );
           }).toList(),
           options: CarouselOptions(
-            height: 300,
+            height: 350,
             autoPlay: true,
             enlargeCenterPage: true,
           ),
